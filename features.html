@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Features | Gaming Hub</title>
+  <style>
+    :root {
+      --bg-color: #0f0f0f;
+      --text-color: #ffffff;
+      --accent-color: #34ffff;
+      --card-bg: #1a1a1a;
+      --hover-bg: #222;
+      --primary-color: #5f27cd;
+    }
+
+    body.light-mode {
+      --bg-color: #f4f4f4ec;
+      --text-color: #111;
+      --accent-color: #007acc;
+      --card-bg: #ffffff;
+      --hover-bg: #eaeaea;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background-color: black;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    ul li a {
+  transition: color 0.3s ease;
+}
+
+ul li a:hover {
+  color: #ff0000;
+}
+
+ul li a.active {
+  color:var(--primary-color);
+  font-weight: bold;
+}
+
+    .toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .features-section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+    }
+    .feature-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  background: linear-gradient(to right, #111, #1a1a1a);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.feature-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+.feature-section p {
+  font-size: 1rem;
+  color: white;
+  opacity: 0.8;
+}
+
+
+    .feature {
+      background: var(--card-bg);
+      border-left: 5px solid var(--accent-color);
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      background-color: var(--hover-bg);
+    }
+
+    .feature h2 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 4rem;
+      font-size: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="Gaming Hub homepage.html">Home</a></li>
+        <li><a href="Gaming Hub.html">About</a></li>
+        <li><a href="features.html"class="active">Features</a></li>
+        <li><a href="download.html">Download</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+  </header>
+  <section class="feature-section">
+    <h1>Website Features</h1>
+    <p>Discover the powerful features that make Gaming Hub awesome!</p>
+  </section>
+  
+
+  <section class="features-section">
+
+    <div class="feature">
+      <h2>Game Library</h2>
+      <p>Explore a curated collection of the most popular mobile and PC games with detailed information, patch notes, and trailers.</p>
+    </div>
+
+    <div class="feature">
+      <h2>Game Categories</h2>
+      <p>Browse by game genres like Battle Royale, Racing, Shooter, and more to discover new and trending titles.</p>
+    </div>
+
+    <div class="feature">
+      <h2>Responsive Design</h2>
+      <p>Fully responsive layout for a seamless experience across desktop, tablet, and mobile devices.</p>
+    </div>
+
+    <div class="feature">
+      <h2>Dark/Light Mode</h2>
+      <p>Choose between light and dark themes for comfortable viewing day or night.</p>
+    </div>
+
+    <div class="feature">
+      <h2>Interactive Cards</h2>
+      <p>Click game cards to explore gameplay, updates, and media — all in one place.</p>
+    </div>
+
+    <div class="feature">
+      <h2>User System (Coming Soon)</h2>
+      <p>Sign up to comment, upload game clips, and save your favorite games.</p>
+    </div>
+
+    <div class="feature">
+      <h2>Image Slideshow</h2>
+      <p>Dynamic slideshow on the homepage that cycles through gaming-themed backgrounds to set the vibe.</p>
+    </div>
+
+  </section>
+
+  <footer>
+   2025 Gaming Hub. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+
+</body>
+</html>

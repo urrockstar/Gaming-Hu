@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Types of Games</title>
+ <style> :root {
+    --bg-light: #f9f9f9;
+    --bg-dark: #0f0f0f;
+    --text-light: #000;
+    --text-dark: #fff;
+    --primary-color: #5f27cd;
+    --accent-color: #34ffff;
+    --card-bg: #1a1a1a;
+    --hover-bg: #222;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+
+  .light-mode {
+    --bg-color: #f4f4f4ec;
+    --text-color: #111;
+    --accent-color: #007acc;
+    --card-bg: #ffffff;
+    --hover-bg: #eaeaea;
+  }
+
+  header {
+    background-color: black;
+    padding: 1rem 0;
+    position: relative;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  ul li a {
+transition: color 0.3s ease;
+}
+
+ul li a:hover {
+color: #ff0000;
+}
+
+ul li a.active {
+color:var(--primary-color);
+font-weight: bold;
+}
+.toggle-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+  .toggle-btn:hover {
+    background-color: var(--hover-bg);
+  }
+
+  
+  .hero-header {
+  text-align: center;
+  padding: 100px 20px;
+  background: url('https://wallpapers.com/images/featured/4k-ultra-hd-gaming-ylyipyznm00tq5og.jpg') no-repeat center center/cover;
+  color: white;
+  opacity: 0;
+  animation: fadeInHero 1.2s ease forwards;
+  background-color: #111;
+}
+
+@keyframes fadeInHero {
+  to {
+    opacity: 1;
+  }
+}
+.search-container {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem 0;
+    }
+
+    .search-container input {
+      width: 300px;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #222;
+      color:white;
+    }
+
+
+  .game-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.game-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(52, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: inherit;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 70%);
+  transform: rotate(25deg);
+  z-index: 0;
+}
+
+.game-card h3,
+.game-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.game-card:hover {
+  background: linear-gradient(135deg, rgba(52, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  transform: translateY(-6px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #222;
+    color:white;
+  }
+  </style>
+</head>
+<body>
+    <header class="main-header">
+    <nav>
+      <ul>
+        <li><a href="Gaming Hub homepage.html">Home</a></li>
+        <li><a href="Gaming Hub.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="game-types.html" class="active">Game Types</a></li>
+        <li><a href="contact.html">contect</a></li>
+      </ul>
+    </nav>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+  </header>
+
+  <section class="hero-header">
+    <h1>All Types of Games</h1>
+    <p>Explore every genre and type of game across the world!</p>
+  </section>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search game types..." onkeyup="searchGames()">
+  </div>
+
+  <section class="game-section">
+    <a href="action.html" class="game-card">
+      <h3>Action Games</h3>
+      <p>Fast-paced, combat-heavy experiences. Click to explore!</p>
+    </a>
+
+    <a href="adventure.html" class="game-card">
+      <h3>Adventure Games</h3>
+      <p>Story-rich journeys filled with exploration and puzzle-solving.</p>
+    </a>
+
+    <a href="sports.html" class="game-card">
+      <h3>Sports Games</h3>
+      <p>All about competition—football, cricket, racing and more!</p>
+    </a>
+
+    <a href="rpg.html" class="game-card">
+      <h3>RPGs</h3>
+      <p>Level up, explore worlds, and immerse in character-driven stories.</p>
+    </a>
+
+    <a href="all games/simulation.html" class="game-card">
+      <h3>Simulation Games</h3>
+      <p>From flight simulators to farming—live your virtual dream life.</p>
+    </a>  
+        <a href="" class="game-card">
+          <h3>Strategy</h3>
+          <p>Planning, resource management, and tactics</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Sports</h3>
+          <p>Based on real or fantasy sports competitions</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Racing</h3>
+          <p>Speed-focused vehicle racing and competitions</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Fighting</h3>
+          <p>1v1 or team combat-focused gameplay</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Shooter</h3>
+          <p>First or third-person shooting action</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Battle Royale</h3>
+          <p>Survival until last player/team remains</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Puzzle</h3>
+          <p>Logic, patterns, and brain teasers</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Platformer</h3>
+          <p>Jumping across levels, often side-scrolling</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Horror</h3>
+          <p>Scary and intense storytelling with survival elements</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Sandbox</h3>
+          <p>Open-ended gameplay with player freedom</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>MMO</h3>
+          <p>Massively multiplayer online games with large worlds</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Casual</h3>
+          <p>Easy-to-play, short-session games</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Party</h3>
+          <p>Multiplayer fun with friends and family</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Rhythm</h3>
+          <p>Based on timing, music, and beats</p>
+            <p></p>
+        </a>
+    
+        <a href="" class="game-card">
+          <h3>Educational</h3>
+          <p>Games that teach and improve skills or knowledge</p>
+            <p></p>
+        </a>
+     <!-- Add more game types as needed -->
+  </section>
+
+  <footer>
+    <p> 2025 Gaming Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Load saved mode
+    window.onload = function() {
+      const mode = localStorage.getItem('mode');
+      if (mode === 'dark') {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.add('light-mode');
+      }
+    };
+    
+    // Save mode on toggle
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+    
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('mode', 'dark');
+      } else {
+        localStorage.setItem('mode', 'light');
+      }
+    }
+    function searchGames() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".game-card");
+
+      cards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        if (title.includes(input)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+    </script>
+</body>
+</html>

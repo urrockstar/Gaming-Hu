@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Gaming Hub</title>
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #0f0f0f;
+      --text-light: #000;
+      --text-dark: #fff;
+      --primary-color: #5f27cd;
+      --accent-color: #34ffff;
+      --card-bg: #1a1a1a;
+      --hover-bg: #222;
+    }
+    html {
+  scroll-behavior: smooth;
+}
+
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .light-mode {
+      --bg-color: #f4f4f4ec;
+      --text-color: #111;
+      --accent-color: #007acc;
+      --card-bg: #ffffff;
+      --hover-bg: #eaeaea;
+    }
+
+    header {
+      background-color: black;
+      padding: 1rem 0;
+      position: relative;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ff0000;
+    }
+
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .about-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slideshow-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      animation: fadeSlide 15s infinite;
+    }
+
+    .slide1 {
+      background-image: url('https://wallpapercave.com/wp/wp9281221.jpg');
+      animation-delay: 0s;
+    }
+
+    .slide2 {
+      background-image: url('https://wallpapercave.com/wp/wp2548380.jpg');
+      animation-delay: 5s;
+    }
+
+    .slide3 {
+      background-image: url('https://wallpaperaccess.com/full/285169.jpg');
+      animation-delay: 10s;
+    }
+
+    @keyframes fadeSlide {
+      0%, 100% {
+        opacity: 0;
+        z-index: 0;
+      }
+      10%, 30% {
+        opacity: 1;
+        z-index: -1;
+      }
+      40%, 90% {
+        opacity: 0;
+        z-index: 0;
+      }
+    }
+
+    .about-section {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .about-section h1 {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      text-shadow: 0 0 8px var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .light-mode .about-section {
+      background-color: rgba(255, 255, 255, 0.4);
+      color: var(--text-light);
+    }
+
+    .dark-mode .about-section {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: var(--text-dark);
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: white;
+    }
+    html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body > header,
+body > section,
+body > footer {
+  flex-shrink: 0;
+}
+
+main {
+  flex: 1;
+}
+
+    @media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .about-section {
+    padding: 1rem;
+  }
+  .toggle-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="Gaming Hub homepage.html">Home</a></li>
+        <li><a href="Gaming Hub.html" class="active">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="game-types.html">Game Types</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+  </header>
+<main>
+  <div class="about-wrapper">
+    <div class="slideshow-bg">
+      <div class="slide slide1"></div>
+      <div class="slide slide2"></div>
+      <div class="slide slide3"></div>
+    </div>
+
+    <section class="about-section">
+      <h1>About Gaming Hub</h1>
+      <p>
+        Gaming Hub is your one-stop platform to discover, explore, and connect with everything about games. Built by gamers for gamers, our mission is to create a centralized space where users can browse game types, stay updated with the latest patch notes, watch gameplay, and engage with a vibrant community.
+      </p>
+      <p>
+        Whether you're a casual mobile gamer or a hardcore PC enthusiast, Gaming Hub offers tools to find, favorite, and learn about every game genre out there. We’re passionate about improving your gaming journey with simplicity and style.
+      </p>
+    </section>
+  </div>
+  </main>
+
+  <footer>
+    <p>2025 Gaming Hub. All rights reserved.</p>
+  </footer>
+  <script>
+    // Load saved mode
+    window.onload = function() {
+      const mode = localStorage.getItem('mode');
+      if (mode === 'dark') {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.add('light-mode');
+      }
+    };
+    
+    // Save mode on toggle
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+    
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('mode', 'dark');
+      } else {
+        localStorage.setItem('mode', 'light');
+      }
+    }
+    </script>
+    
+</body>
+</html>

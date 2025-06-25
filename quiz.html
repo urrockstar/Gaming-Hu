@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Game | Gaming Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-dark: #0f0f0f;
+      --bg-light: #f9f9f9;
+      --text-dark: #ffffff;
+      --text-light: #000000;
+      --primary-color: #5f27cd;
+      --accent-color: #34ffff;
+      --card-bg: #1a1a1a;
+      --hover-bg: #222;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    header {
+      background-color: black;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    ul li a:hover {
+      color: #ff0000;
+    }
+
+    ul li a.active {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-bg);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: linear-gradient(135deg, rgba(52, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    .question {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .options button {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      background-color: var(--hover-bg);
+      color: var(--text-dark);
+      border: 1px solid var(--accent-color);
+      border-radius: 8px;     
+      cursor: pointer; 
+    }
+
+    .options button:hover {
+      background-color: #29cccc;
+    }
+
+    .result, .level-info, .retry-btn {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .retry-btn button {
+      padding: 0.6rem 1.2rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="Gaming Hub homepage.html">Home</a></li>
+        <li><a href="Gaming Hub.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="Games.html" class="active">Games</a></li>
+      </ul>
+      <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+    </nav>
+  </header>
+
+  <main class="quiz-container">
+    <div class="level-info" id="levelInfo">Level 1</div>
+    <div class="question" id="question">Loading...</div>
+    <div class="options" id="options"></div>
+    <div class="result" id="result"></div>
+    <div class="retry-btn" id="retryBtn" style="display:none;"><button onclick="restartLevel()">Retry Level</button></div>
+  </main>
+
+  <footer>
+    2025 Gaming Hub. All rights reserved.
+  </footer>
+
+  <script>
+    const allLevels = [
+      [
+        { question: "Which game engine uses Blueprints?", options: ["Unity", "Godot", "Unreal Engine", "CryEngine"], answer: 2 },
+        { question: "What is the objective in Pac-Man?", options: ["Shoot aliens", "Eat pellets", "Collect stars", "Build cities"], answer: 1 },
+        { question: "Who is the main character in The Legend of Zelda?", options: ["Zelda", "Link", "Ganon", "Epona"], answer: 1 },
+        { question: "What genre is Call of Duty?", options: ["RPG", "Puzzle", "Shooter", "Simulator"], answer: 2 },
+        { question: "Which company created Mario?", options: ["Sony", "Microsoft", "Nintendo", "Atari"], answer: 2 },
+      ],
+      [
+        { question: "Which year was Minecraft released?", options: ["2007", "2009", "2011", "2013"], answer: 1 },
+        { question: "In Among Us, who is the killer?", options: ["The Alien", "The Spy", "The Impostor", "The Ghost"], answer: 2 },
+        { question: "What is the name of Sonic's sidekick?", options: ["Knuckles", "Tails", "Shadow", "Eggman"], answer: 1 },
+        { question: "Which is not a Pokémon type?", options: ["Fire", "Water", "Shadow", "Electric"], answer: 2 },
+        { question: "Fortnite is best described as?", options: ["MMORPG", "Battle Royale", "MOBA", "Roguelike"], answer: 1 },
+      ],
+      [
+        { question: "In PUBG, what does the blue zone do?", options: ["Heals players", "Gives loot", "Shrinks map", "Deals damage"], answer: 3 },
+        { question: "Which game features a pickaxe and mining?", options: ["Minecraft", "FIFA", "Overwatch", "The Sims"], answer: 0 },
+        { question: "Who developed The Witcher series?", options: ["EA", "Ubisoft", "CD Projekt", "Activision"], answer: 2 },
+        { question: "What is Kratos' weapon in God of War?", options: ["Axe", "Sword", "Blades of Chaos", "Spear"], answer: 2 },
+        { question: "Which game is known for crafting potions?", options: ["Skyrim", "GTA", "FIFA", "Tekken"], answer: 0 },
+      ]
+    ];
+
+    let currentLevel = 0;
+    let currentQuestion = 0;
+    let score = 0;
+
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('mode', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+
+    window.onload = () => {
+      const savedMode = localStorage.getItem('mode');
+      document.body.classList.add(savedMode === 'light' ? 'light-mode' : 'dark-mode');
+      showQuestion();
+    };
+
+    function showQuestion() {
+      const questionSet = allLevels[currentLevel];
+      document.getElementById('levelInfo').textContent = `Level ${currentLevel + 1}`;
+      const q = questionSet[currentQuestion];
+      document.getElementById('question').textContent = q.question;
+      const optionsDiv = document.getElementById('options');
+      optionsDiv.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.onclick = () => checkAnswer(i);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const questionSet = allLevels[currentLevel];
+      if (selected === questionSet[currentQuestion].answer) score++;
+      currentQuestion++;
+
+      if (currentQuestion < questionSet.length) {
+        showQuestion();
+      } else {
+        evaluateLevel();
+      }
+    }
+
+    function evaluateLevel() {
+      const requiredScore = Math.ceil(allLevels[currentLevel].length * 0.6);
+      const result = document.getElementById('result');
+
+      if (score >= requiredScore) {
+        if (currentLevel < allLevels.length - 1) {
+          result.textContent = `Great! Moving to Level ${currentLevel + 2}`;
+          currentLevel++;
+          currentQuestion = 0;
+          score = 0;
+          setTimeout(() => {
+            result.textContent = '';
+            showQuestion();
+          }, 1500);
+        } else {
+          result.textContent = 'Congratulations! You completed all levels!';
+          document.getElementById('options').innerHTML = '';
+        }
+      } else {
+        result.textContent = 'You did not pass. Try again!';
+        document.getElementById('retryBtn').style.display = 'block';
+      }
+    }
+
+    function restartLevel() {
+      score = 0;
+      currentQuestion = 0;
+      document.getElementById('result').textContent = '';
+      document.getElementById('retryBtn').style.display = 'none';
+      showQuestion();
+    }
+  </script>
+</body>
+</html>

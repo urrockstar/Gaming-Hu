@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Gaming Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-color: #0f0f0f;
+      --text-color: #ffffff;
+      --accent-color: #34ffff;
+      --card-bg: #1a1a1a;
+      --hover-bg: #222;
+      --primary-color: #5f27cd;
+    }
+    body.light-mode {
+      --bg-color: #f4f4f4;
+      --text-color: #111;
+      --accent-color: #007acc;
+      --card-bg: #ffffff;
+      --hover-bg: #eaeaea;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header{
+      background-color: black;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    ul li a:hover {
+      color: #ff0000;
+    }
+    ul li a.active {
+  color:var(--primary-color);
+  font-weight: bold;
+}
+    .toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--hover-bg);
+    }
+    .contact-section {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .contact-section h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--hover-bg);
+      color: var(--text-color);
+    }
+
+    form button {
+      background-color: var(--accent-color);
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    form button:hover {
+      background-color: #29cccc;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      color: var(--accent-color);
+      margin: 0 10px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ff0000;
+    }
+    .game-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+    .game-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(52, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: inherit;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 70%);
+  transform: rotate(25deg);
+  z-index: 0;
+}
+
+.game-card h3,
+.game-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.game-card:hover {
+  background: linear-gradient(135deg, rgba(52, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  transform: translateY(-6px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+    footer{
+      background:#222;
+      color: #eaeaea;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="Gaming Hub homepage.html">Home</a></li>
+      <li><a href="Gaming Hub.html">About</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+  </nav>
+</header>
+
+<section class="contact-section">
+  <h1>Contact Us</h1>
+  <form action="https://formspree.io/f/xvganezw" method="POST" id="myForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <p id="statusMessage" style="display:none; color:green;">Thanks! Your message has been sent.</p>
+
+  <div class="social-icons">
+    <a href="" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="http://www.youtube.com/@UR_ROCKSTAR1" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:urrockstar04@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("myForm");
+  const statusMsg = document.getElementById("statusMessage");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.reset();
+      statusMsg.style.display = 'block';
+    } else {
+      alert('Oops! Something went wrong.');
+    }
+  });
+</script>
+
+<footer>
+  2025 Gaming Hub. All rights reserved.
+</footer>
+<script>
+  function toggleMode() {
+    document.body.classList.toggle('light-mode');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Hub</title>
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #0f0f0f;
+      --text-light: #000;
+      --text-dark: #fff;
+      --primary-color: #5f27cd;
+      --accent-color: #34ffff;
+      --card-bg: #1a1a1a;
+      --hover-bg: #222;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .light-mode {
+      --bg-color: #f4f4f4ec;
+      --text-color: #111;
+      --accent-color: #007acc;
+      --card-bg: #ffffff;
+      --hover-bg: #eaeaea;
+    }
+
+    header {
+      background-color: black;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    ul li a {
+  transition: color 0.3s ease;
+}
+
+ul li a:hover {
+  color: #ff0000;
+}
+
+ul li a.active {
+  color:var(--primary-color);
+  font-weight: bold;
+}
+.toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-bg);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .toggle-btn:hover {
+      background-color: var(--hover-bg);
+    }
+
+  .hero-header {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slideshow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fade 40s infinite;
+}
+
+.slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.slide:nth-child(2) {
+  animation-delay: 10s;
+}
+.slide:nth-child(3) {
+  animation-delay: 20s;
+}
+.slide:nth-child(4) {
+  animation-delay: 30s;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  25% { opacity: 1; }
+  35% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+  
+ .game-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.game-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(52, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: inherit;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 70%);
+  transform: rotate(25deg);
+  z-index: 0;
+}
+
+.game-card h3,
+.game-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.game-card:hover {
+  background: linear-gradient(135deg, rgba(52, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  transform: translateY(-6px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: white;
+    }
+    @media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .toggle-btn {
+    position: static;
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .game-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .game-section {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  header {
+    text-align: center;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="Gaming Hub homepage.html"class="active">Home</a></li>
+        <li><a href="Gaming Hub.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="download.html">Download</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="Games.html">Game</a></li>
+      </ul>    
+    </nav>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+  </header>
+  <section class="hero-header">
+    <div class="slideshow">
+      <div class="slide" style="background-image: url('https://images8.alphacoders.com/471/thumb-1920-471315.jpg');"></div>
+      <div class="slide" style="background-image: url('https://wallpapers.com/images/hd/4k-ultra-hd-gaming-various-video-game-characters-pwft8i64hoqzblaq.jpg');"></div>
+      <div class="slide" style="background-image: url('https://images.hdqwalls.com/download/godfall-game-4k-gr-1920x1080.jpg');"></div>
+      <div class="slide" style="background-image: url('https://wallpaperaccess.com/full/5426398.jpg');"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1>Welcome to Gaming Hub</h1>
+      <p>Your Gateway to the Gaming Universe</p>
+    </div>
+  </section>
+  
+
+  <section class="game-section">
+    <a href="battle-royale.html" class="game-card">
+      <h3>Battle Royale</h3>
+      <p>Includes popular games like Free Fire, PUBG, and more.</p>
+      <p>Click to explore gameplay, patch notes, and updates!</p>
+    </a>
+  
+    <a href="multiplayer-shooter.html" class="game-card">
+      <h3>Multiplayer Shooter</h3>
+      <p>Explore games like Call of Duty Mobile, Warzone,Free Fire, and others.</p>
+      <p>Click to view YouTube links, game info, etc.</p>
+    </a>
+  
+    <a href="racing-sports.html" class="game-card">
+      <h3>Racing & Sports</h3>
+      <p>Includes games like Asphalt, FIFA Mobile, etc.</p>
+      <p>Click to discover gameplay, tournaments, and updates!</p>
+       </a>
+
+    <a href="game-types.html" class="game-card">
+      <h4>More Games</h4>
+      <p>Like==>Creative Games,Action Games,Online Games,etc</p>
+      <p>Click to view YouTube links, game info, etc. </p>
+    </a>
+  </section>
+  
+  
+  <footer>
+    <p> 2025 Gaming Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Load saved mode
+    window.onload = function() {
+      const mode = localStorage.getItem('mode');
+      if (mode === 'dark') {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.add('light-mode');
+      }
+    };
+    
+    // Save mode on toggle
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+    
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('mode', 'dark');
+      } else {
+        localStorage.setItem('mode', 'light');
+      }
+    }
+    </script>
+  <section></section>
+</body>
+</html>

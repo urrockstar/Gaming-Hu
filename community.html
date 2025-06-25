@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon | Gaming Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-color: #0f0f0f;
+      --text-color: #ffffff;
+      --accent-color: #34ffff;
+      --card-bg: #1a1a1a;
+      --hover-bg: #222;
+      --primary-color: #5f27cd;
+    }
+
+    body.light-mode {
+      --bg-color: #f4f4f4;
+      --text-color: #111;
+      --accent-color: #007acc;
+      --card-bg: #ffffff;
+      --hover-bg: #eaeaea;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background-color: black;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    ul li a:hover {
+      color: #ff0000;
+    }
+
+    ul li a.active {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .coming-soon {
+      max-width: 600px;
+      margin: 5rem auto;
+      background: linear-gradient(135deg, rgba(52, 255, 255, 0.226), rgba(255, 255, 255, 0.144));
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .coming-soon h1 {
+      color: var(--accent-color);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .coming-soon p {
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background: #222;
+      color: #eaeaea;
+      text-align: center;
+      padding: 1rem;
+      margin-top:12.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="Gaming Hub homepage.html">Home</a></li>
+      <li><a href="Gaming Hub.html">About</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="download.html">Download</a></li>
+      <li><a href="" class="active">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+  </nav>
+</header>
+
+<section class="coming-soon">
+  <h1>Coming Soon</h1>
+  <p>We're working hard to bring you something awesome. Stay tuned!</p>
+</section>
+
+<footer>
+  2025 Gaming Hub. All rights reserved.
+</footer>
+
+<script>
+  function toggleMode() {
+    document.body.classList.toggle('light-mode');
+  }
+</script>
+
+</body>
+</html>
